@@ -15,26 +15,19 @@ final class VitalValidator {
     this.vitalLimits = vitalLimits;
   }
 
-  /**
-   * Validates the supplied vital values in the configured evaluation order.
-   *
-   * @param temperature the measured body temperature in Fahrenheit
-   * @param pulseRate the measured pulse rate in beats per minute
-   * @param spo2 the measured oxygen saturation percentage
-   * @return the first validation failure message, or {@code null} when all values are valid
-   */
+  /** Returns the first configured validation failure, or {@code null} when all vitals are valid. */
   String validate(float temperature, float pulseRate, float spo2) {
-    String temperatureValidation = validateVital(temperature, vitalLimits.getTemperatureRange());
+    String temperatureValidation = validateVital(temperature, vitalLimits.temperatureRange);
     if (temperatureValidation != null) {
       return temperatureValidation;
     }
 
-    String pulseRateValidation = validateVital(pulseRate, vitalLimits.getPulseRateRange());
+    String pulseRateValidation = validateVital(pulseRate, vitalLimits.pulseRateRange);
     if (pulseRateValidation != null) {
       return pulseRateValidation;
     }
 
-    return validateVital(spo2, vitalLimits.getSpo2Range());
+    return validateVital(spo2, vitalLimits.spo2Range);
   }
 
   /**
