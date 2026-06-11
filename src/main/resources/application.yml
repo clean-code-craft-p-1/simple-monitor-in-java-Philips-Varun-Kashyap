@@ -1,0 +1,12 @@
+vitals:
+  temperature:
+    min: 95.0
+    max: 104.0
+  pulseRate:
+    min: 50.0
+    max: 100.0
+  spo2:
+    min: 90.0
+    max: 100.0
+alert:
+  sleepMillis: 1000
